@@ -16,8 +16,8 @@ It reads vocabulary from a JSON file, automatically generates British English pr
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/daFoggo/Anki-Vocabulary-Import-Generator.git
-cd Anki-Vocabulary-Import-Generator
+git clone https://github.com/daFoggo/anki-vocabulary-import-generator.git
+cd anki-vocabulary-import-generator
 ```
 
 ### 2. Install dependencies
