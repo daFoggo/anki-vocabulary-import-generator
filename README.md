@@ -10,6 +10,7 @@ It reads vocabulary from a JSON file, automatically generates British English pr
 - 🎧 **Auto-Audio:** Downloads pronunciation (mp3) directly to Anki's media folder.
 - 🇬🇧 **British Accent:** Configured for IELTS standard (UK English).
 - ⚡ **Smart Import:** Generates Anki-ready text files with correct headers.
+- 📂 **Dynamic Deck Names:** Automatically creates deck names from topic metadata.
 - ⚙️ **Configurable:** Easy configuration via `config.json`.
 - 🔍 **Auto-Detection:** Automatically finds Anki's media folder on Windows, macOS, and Linux.
 
@@ -156,20 +157,31 @@ hr {
 
 ### 1. Add vocabulary data
 
-Edit `data/vocab.json` with your vocabulary:
+Edit `data/vocab.json` with your vocabulary. The file uses a **metadata + words** format:
 
 ```json
-[
-  {
-    "word": "Example",
-    "ipa": "/ɪɡˈzæmpəl/",
-    "meaning": "A thing characteristic of its kind.<br><i>(Ví dụ)</i>",
-    "context": "This is an <b>example</b> sentence.",
-    "extra": "Synonyms: instance, sample",
-    "tags": "Topic_General IELTS_Noun"
-  }
-]
+{
+  "metadata": {
+    "topic": "Environment"
+  },
+  "words": [
+    {
+      "word": "Pollution",
+      "ipa": "/pəˈluːʃn/",
+      "meaning": "The presence of harmful substances in the environment.<br><i>(Ô nhiễm)</i>",
+      "context": "Air <b>pollution</b> is a major problem in big cities.<br><i>(Ô nhiễm không khí là vấn đề lớn ở các thành phố lớn.)</i>",
+      "extra": "Synonyms: contamination, impurity",
+      "tags": "Topic_Environment IELTS_Noun"
+    }
+  ]
+}
 ```
+
+The `topic` in metadata will be automatically appended to your base deck name. For example:
+
+- `base_deck_name`: `"IELTS Preparation"`
+- `topic`: `"Environment"`
+- **Result deck**: `IELTS Preparation::Environment`
 
 #### 💡 Pro Tip: Use AI to generate vocabulary data!
 
@@ -177,16 +189,21 @@ You can use ChatGPT, Claude, Gemini, or any AI to generate vocabulary in the cor
 
 ```
 Generate 20 IELTS vocabulary words about [TOPIC] in this JSON format:
-[
-  {
-    "word": "vocabulary word",
-    "ipa": "/IPA pronunciation/",
-    "meaning": "English definition<br><i>(Vietnamese translation)</i>",
-    "context": "Example sentence with <b>word</b> in bold.<br><i>(Vietnamese translation)</i>",
-    "extra": "Synonyms: word1, word2",
-    "tags": "Topic_[TOPIC] IELTS_[PartOfSpeech]"
-  }
-]
+{
+  "metadata": {
+    "topic": "[TOPIC]"
+  },
+  "words": [
+    {
+      "word": "vocabulary word",
+      "ipa": "/IPA pronunciation/",
+      "meaning": "English definition<br><i>(Vietnamese translation)</i>",
+      "context": "Example sentence with <b>word</b> in bold.<br><i>(Vietnamese translation)</i>",
+      "extra": "Synonyms: word1, word2",
+      "tags": "Topic_[TOPIC] IELTS_[PartOfSpeech]"
+    }
+  ]
+}
 ```
 
 Then paste the AI-generated JSON directly into `data/vocab.json`!
@@ -207,16 +224,31 @@ python main.py
 
 Edit `config.json` to customize:
 
-| Option             | Description                                                   | Default                           |
-| ------------------ | ------------------------------------------------------------- | --------------------------------- |
-| `anki_media_path`  | Path to Anki media folder. Set to `"auto"` for auto-detection | `"auto"`                          |
-| `input_file`       | Path to vocabulary JSON file                                  | `"data/vocab.json"`               |
-| `output_file`      | Path to output text file                                      | `"output/import_to_anki.txt"`     |
-| `deck_name`        | Target deck name in Anki                                      | `"IELTS Preparation::Vocabulary"` |
-| `note_type`        | Note type to use                                              | `"IELTS Advanced"`                |
-| `tts_lang`         | Language code for TTS                                         | `"en"`                            |
-| `tts_tld`          | TLD for accent (see table below)                              | `"co.uk"`                         |
-| `audio_silence_ms` | Silence (in ms) added at the start of each audio file         | `300`                             |
+| Option             | Description                                                   | Default                       |
+| ------------------ | ------------------------------------------------------------- | ----------------------------- |
+| `anki_media_path`  | Path to Anki media folder. Set to `"auto"` for auto-detection | `"auto"`                      |
+| `input_file`       | Path to vocabulary JSON file                                  | `"data/vocab.json"`           |
+| `output_file`      | Path to output text file                                      | `"output/import_to_anki.txt"` |
+| `base_deck_name`   | Base deck name (topic from vocab.json is appended)            | `"IELTS Preparation"`         |
+| `note_type`        | Note type to use                                              | `"IELTS Advanced"`            |
+| `tts_lang`         | Language code for TTS                                         | `"en"`                        |
+| `tts_tld`          | TLD for accent (see table below)                              | `"co.uk"`                     |
+| `audio_silence_ms` | Silence (in ms) added at the start of each audio file         | `300`                         |
+
+### 📂 Dynamic Deck Naming
+
+The script automatically creates deck names by combining `base_deck_name` from config with `topic` from vocab.json metadata:
+
+```
+{base_deck_name}::{topic}
+```
+
+**Examples:**
+| `base_deck_name` | `topic` (in vocab.json) | Final Deck Name |
+| ---------------- | ----------------------- | --------------- |
+| `IELTS Preparation` | `Environment` | `IELTS Preparation::Environment` |
+| `IELTS Preparation` | `Health` | `IELTS Preparation::Health` |
+| `English Vocab` | `Business` | `English Vocab::Business` |
 
 ### 🔇 Audio Silence Configuration
 
@@ -262,6 +294,16 @@ The script automatically finds Anki's media folder based on official locations:
 If auto-detection fails, audio files are saved to `output/media/` and you'll need to copy them manually to Anki's `collection.media` folder.
 
 ## Vocabulary JSON Format
+
+The vocab.json file has two parts:
+
+### Metadata (required for dynamic deck naming)
+
+| Field   | Description                       | Required |
+| ------- | --------------------------------- | -------- |
+| `topic` | Topic name, appended to deck name | ✅       |
+
+### Words array
 
 Each vocabulary item supports the following fields:
 

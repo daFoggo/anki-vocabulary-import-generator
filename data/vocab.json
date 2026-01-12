@@ -1,66 +1,71 @@
-[
-  {
-    "word": "Friendship",
-    "ipa": "/ˈfrendʃɪp/",
-    "meaning": "The emotions or conduct of friends; the state of being friends.<br><i>(Tình bạn)</i>",
-    "context": "Their <b>friendship</b> began in kindergarten.<br><i>(Tình bạn của họ bắt đầu từ mẫu giáo.)</i>",
-    "extra": "Synonyms: companionship, camaraderie",
-    "tags": "Topic_Friendship IELTS_Noun"
+{
+  "metadata": {
+    "topic": "Friendship"
   },
-  {
-    "word": "Form a friendship",
-    "ipa": "/fɔːm ə ˈfrendʃɪp/",
-    "meaning": "To establish a friendly relationship.<br><i>(Hình thành/Xây dựng tình bạn thân thiết)</i>",
-    "context": "It takes time to <b>form a friendship</b> that can withstand challenges.<br><i>(Mất thời gian để xây dựng một tình bạn có thể vượt qua thử thách.)</i>",
-    "extra": "Collocation: cement a friendship, strike up a friendship",
-    "tags": "Topic_Friendship IELTS_Phrase"
-  },
-  {
-    "word": "Relationship",
-    "ipa": "/rɪˈleɪʃnʃɪp/",
-    "meaning": "The way in which two or more people or groups regard and behave toward each other.<br><i>(Mối quan hệ)</i>",
-    "context": "They have a very close <b>relationship</b>.<br><i>(Họ có một mối quan hệ rất thân thiết.)</i>",
-    "extra": "Synonym: bond, connection, friendship",
-    "tags": "Topic_Friendship IELTS_Noun"
-  },
-  {
-    "word": "Connection",
-    "ipa": "/kəˈnekʃn/",
-    "meaning": "A relationship in which a person, thing, or idea is linked or associated with something else.<br><i>(Mối liên hệ, kết nối)</i>",
-    "context": "I felt a strong <b>connection</b> with him immediately.<br><i>(Tôi cảm thấy một sự kết nối mạnh mẽ với anh ấy ngay lập tức.)</i>",
-    "extra": "Synonym: link, association, friendship",
-    "tags": "Topic_Friendship IELTS_Noun"
-  },
-  {
-    "word": "Social networking site",
-    "ipa": "/ˌsəʊʃl ˈnetwɜːkɪŋ saɪt/",
-    "meaning": "A website that allows people to communicate and share information.<br><i>(Mạng xã hội)</i>",
-    "context": "Facebook is the most popular <b>social networking site</b>.<br><i>(Facebook là trang mạng xã hội phổ biến nhất.)</i>",
-    "extra": "Synonym: social media platform/site",
-    "tags": "Topic_Technology IELTS_Noun"
-  },
-  {
-    "word": "Online friend",
-    "ipa": "/ˌɒnˈlaɪn frend/",
-    "meaning": "A friend who you communicate with chiefly or only over the internet.<br><i>(Bạn trên mạng)</i>",
-    "context": "I have never met my <b>online friend</b> in person.<br><i>(Tôi chưa bao giờ gặp người bạn trên mạng của mình ngoài đời.)</i>",
-    "extra": "Synonym: internet friend, virtual friend",
-    "tags": "Topic_Friendship IELTS_Noun"
-  },
-  {
-    "word": "Real friend",
-    "ipa": "/rɪəl frend/",
-    "meaning": "A friend who is loyal and supports you in real life context.<br><i>(Bạn tốt, bạn ngoài đời thực)</i>",
-    "context": "A <b>real friend</b> is someone who walks in when the rest of the world walks out.<br><i>(Bạn thực sự là người bước vào khi cả thế giới bước ra.)</i>",
-    "extra": "Synonym: offline friend, in-person friend, true friend",
-    "tags": "Topic_Friendship IELTS_Noun"
-  },
-  {
-    "word": "Temporary",
-    "ipa": "/ˈtemprəri/",
-    "meaning": "Lasting for only a limited period of time; not permanent.<br><i>(Tạm thời)</i>",
-    "context": "University friendships are sometimes just <b>temporary</b>.<br><i>(Tình bạn đại học đôi khi chỉ là tạm thời.)</i>",
-    "extra": "Synonym: short-term, brief<br>Antonym: permanent, lasting",
-    "tags": "Topic_Friendship IELTS_Adjective"
-  }
-]
+  "words": [
+    {
+      "word": "Friendship",
+      "ipa": "/ˈfrendʃɪp/",
+      "meaning": "The emotions or conduct of friends; the state of being friends.<br><i>(Tình bạn)</i>",
+      "context": "Their <b>friendship</b> began in kindergarten.<br><i>(Tình bạn của họ bắt đầu từ mẫu giáo.)</i>",
+      "extra": "Synonyms: companionship, camaraderie",
+      "tags": "Topic_Friendship IELTS_Noun"
+    },
+    {
+      "word": "Form a friendship",
+      "ipa": "/fɔːm ə ˈfrendʃɪp/",
+      "meaning": "To establish a friendly relationship.<br><i>(Hình thành/Xây dựng tình bạn thân thiết)</i>",
+      "context": "It takes time to <b>form a friendship</b> that can withstand challenges.<br><i>(Mất thời gian để xây dựng một tình bạn có thể vượt qua thử thách.)</i>",
+      "extra": "Collocation: cement a friendship, strike up a friendship",
+      "tags": "Topic_Friendship IELTS_Phrase"
+    },
+    {
+      "word": "Relationship",
+      "ipa": "/rɪˈleɪʃnʃɪp/",
+      "meaning": "The way in which two or more people or groups regard and behave toward each other.<br><i>(Mối quan hệ)</i>",
+      "context": "They have a very close <b>relationship</b>.<br><i>(Họ có một mối quan hệ rất thân thiết.)</i>",
+      "extra": "Synonym: bond, connection, friendship",
+      "tags": "Topic_Friendship IELTS_Noun"
+    },
+    {
+      "word": "Connection",
+      "ipa": "/kəˈnekʃn/",
+      "meaning": "A relationship in which a person, thing, or idea is linked or associated with something else.<br><i>(Mối liên hệ, kết nối)</i>",
+      "context": "I felt a strong <b>connection</b> with him immediately.<br><i>(Tôi cảm thấy một sự kết nối mạnh mẽ với anh ấy ngay lập tức.)</i>",
+      "extra": "Synonym: link, association, friendship",
+      "tags": "Topic_Friendship IELTS_Noun"
+    },
+    {
+      "word": "Social networking site",
+      "ipa": "/ˌsəʊʃl ˈnetwɜːkɪŋ saɪt/",
+      "meaning": "A website that allows people to communicate and share information.<br><i>(Mạng xã hội)</i>",
+      "context": "Facebook is the most popular <b>social networking site</b>.<br><i>(Facebook là trang mạng xã hội phổ biến nhất.)</i>",
+      "extra": "Synonym: social media platform/site",
+      "tags": "Topic_Technology IELTS_Noun"
+    },
+    {
+      "word": "Online friend",
+      "ipa": "/ˌɒnˈlaɪn frend/",
+      "meaning": "A friend who you communicate with chiefly or only over the internet.<br><i>(Bạn trên mạng)</i>",
+      "context": "I have never met my <b>online friend</b> in person.<br><i>(Tôi chưa bao giờ gặp người bạn trên mạng của mình ngoài đời.)</i>",
+      "extra": "Synonym: internet friend, virtual friend",
+      "tags": "Topic_Friendship IELTS_Noun"
+    },
+    {
+      "word": "Real friend",
+      "ipa": "/rɪəl frend/",
+      "meaning": "A friend who is loyal and supports you in real life context.<br><i>(Bạn tốt, bạn ngoài đời thực)</i>",
+      "context": "A <b>real friend</b> is someone who walks in when the rest of the world walks out.<br><i>(Bạn thực sự là người bước vào khi cả thế giới bước ra.)</i>",
+      "extra": "Synonym: offline friend, in-person friend, true friend",
+      "tags": "Topic_Friendship IELTS_Noun"
+    },
+    {
+      "word": "Temporary",
+      "ipa": "/ˈtemprəri/",
+      "meaning": "Lasting for only a limited period of time; not permanent.<br><i>(Tạm thời)</i>",
+      "context": "University friendships are sometimes just <b>temporary</b>.<br><i>(Tình bạn đại học đôi khi chỉ là tạm thời.)</i>",
+      "extra": "Synonym: short-term, brief<br>Antonym: permanent, lasting",
+      "tags": "Topic_Friendship IELTS_Adjective"
+    }
+  ]
+}

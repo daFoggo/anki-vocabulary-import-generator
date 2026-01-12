@@ -121,9 +121,28 @@ def main():
         return
 
     with open(input_file, 'r', encoding='utf-8') as f:
-        vocab_list = json.load(f)
+        data = json.load(f)
 
-    # 4. Main processing
+    # Support both new format (with metadata) and old format (plain array)
+    if isinstance(data, dict):
+        metadata = data.get("metadata", {})
+        vocab_list = data.get("words", [])
+        topic = metadata.get("topic", "")
+    else:
+        # Legacy format: plain array
+        vocab_list = data
+        topic = ""
+
+    # 4. Build dynamic deck name
+    base_deck_name = config.get("base_deck_name", "Default")
+    if topic:
+        deck_name = f"{base_deck_name}::{topic}"
+        print(f"{Colors.OKBLUE}📂 Deck:{Colors.ENDC} {deck_name}")
+    else:
+        deck_name = base_deck_name
+        print(f"{Colors.WARNING}⚠️  No topic in metadata. Using base deck: {deck_name}{Colors.ENDC}")
+
+    # 5. Main processing
     export_data = []
     print(f"\n🚀 Processing {len(vocab_list)} vocabulary items...\n")
 
@@ -202,7 +221,7 @@ def main():
         ]
         export_data.append(row)
 
-    # 5. Export TXT file
+    # 6. Export TXT file
     output_file = config.get("output_file", "output/import_to_anki.txt")
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
 
@@ -211,7 +230,7 @@ def main():
         file.write("#separator:Tab\n")
         file.write("#html:true\n")
         file.write(f"#notetype:{config.get('note_type', 'Basic')}\n")
-        file.write(f"#deck:{config.get('deck_name', 'Default')}\n")
+        file.write(f"#deck:{deck_name}\n")
         file.write("#tags column:7\n")
         
         writer = csv.writer(file, delimiter='\t')
