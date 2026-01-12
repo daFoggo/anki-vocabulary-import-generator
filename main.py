@@ -4,6 +4,8 @@ import os
 import time
 import platform
 import shutil
+import subprocess
+import tempfile
 from pathlib import Path
 from gtts import gTTS
 
@@ -137,13 +139,48 @@ def main():
         status_icon = "⏭️ "
         if not os.path.exists(full_audio_path):
             try:
-                # Call Google TTS API
-                tts = gTTS(
-                    text=word, 
-                    lang=config.get("tts_lang", "en"), 
-                    tld=config.get("tts_tld", "co.uk")
-                )
-                tts.save(full_audio_path)
+                silence_ms = config.get("audio_silence_ms", 300)
+                
+                if silence_ms > 0:
+                    # Use temp files for ffmpeg processing
+                    with tempfile.TemporaryDirectory() as temp_dir:
+                        temp_audio = os.path.join(temp_dir, "temp_audio.mp3")
+                        
+                        # Call Google TTS API and save to temp file
+                        tts = gTTS(
+                            text=word, 
+                            lang=config.get("tts_lang", "en"), 
+                            tld=config.get("tts_tld", "co.uk")
+                        )
+                        tts.save(temp_audio)
+                        
+                        # Use ffmpeg to add silence at the beginning
+                        # adelay filter adds delay in milliseconds
+                        ffmpeg_cmd = [
+                            "ffmpeg", "-y",
+                            "-i", temp_audio,
+                            "-af", f"adelay={silence_ms}|{silence_ms}",
+                            "-q:a", "2",  # Good quality
+                            full_audio_path
+                        ]
+                        
+                        result = subprocess.run(
+                            ffmpeg_cmd,
+                            capture_output=True,
+                            text=True
+                        )
+                        
+                        if result.returncode != 0:
+                            raise Exception(f"FFmpeg error: {result.stderr}")
+                else:
+                    # No silence needed, save directly
+                    tts = gTTS(
+                        text=word, 
+                        lang=config.get("tts_lang", "en"), 
+                        tld=config.get("tts_tld", "co.uk")
+                    )
+                    tts.save(full_audio_path)
+                
                 status_icon = "⬇️ "
                 time.sleep(0.3)  # Polite delay to avoid rate limiting
             except Exception as e:

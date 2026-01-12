@@ -5,5 +5,6 @@
   "deck_name": "IELTS Preparation::Vocabulary",
   "note_type": "IELTS Advanced",
   "tts_lang": "en",
-  "tts_tld": "co.uk"
+  "tts_tld": "co.uk",
+  "audio_silence_ms": 300
 }

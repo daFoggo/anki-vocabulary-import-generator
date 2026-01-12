@@ -28,7 +28,30 @@ cd anki-vocabulary-import-generator
 pip install -r requirements.txt
 ```
 
-### 3. Create Note Type in Anki (First time only)
+### 3. Install FFmpeg (Required for audio processing)
+
+**Windows:**
+
+```bash
+winget install ffmpeg
+```
+
+Or download from [ffmpeg.org](https://ffmpeg.org/download.html) and add to PATH.
+
+**macOS:**
+
+```bash
+brew install ffmpeg
+```
+
+**Linux:**
+
+```bash
+sudo apt install ffmpeg  # Debian/Ubuntu
+sudo dnf install ffmpeg  # Fedora
+```
+
+### 4. Create Note Type in Anki (First time only)
 
 Before importing, you need to create a custom Note Type in Anki:
 
@@ -184,15 +207,24 @@ python main.py
 
 Edit `config.json` to customize:
 
-| Option            | Description                                                   | Default                           |
-| ----------------- | ------------------------------------------------------------- | --------------------------------- |
-| `anki_media_path` | Path to Anki media folder. Set to `"auto"` for auto-detection | `"auto"`                          |
-| `input_file`      | Path to vocabulary JSON file                                  | `"data/vocab.json"`               |
-| `output_file`     | Path to output text file                                      | `"output/import_to_anki.txt"`     |
-| `deck_name`       | Target deck name in Anki                                      | `"IELTS Preparation::Vocabulary"` |
-| `note_type`       | Note type to use                                              | `"IELTS Advanced"`                |
-| `tts_lang`        | Language code for TTS                                         | `"en"`                            |
-| `tts_tld`         | TLD for accent (see table below)                              | `"co.uk"`                         |
+| Option             | Description                                                   | Default                           |
+| ------------------ | ------------------------------------------------------------- | --------------------------------- |
+| `anki_media_path`  | Path to Anki media folder. Set to `"auto"` for auto-detection | `"auto"`                          |
+| `input_file`       | Path to vocabulary JSON file                                  | `"data/vocab.json"`               |
+| `output_file`      | Path to output text file                                      | `"output/import_to_anki.txt"`     |
+| `deck_name`        | Target deck name in Anki                                      | `"IELTS Preparation::Vocabulary"` |
+| `note_type`        | Note type to use                                              | `"IELTS Advanced"`                |
+| `tts_lang`         | Language code for TTS                                         | `"en"`                            |
+| `tts_tld`          | TLD for accent (see table below)                              | `"co.uk"`                         |
+| `audio_silence_ms` | Silence (in ms) added at the start of each audio file         | `300`                             |
+
+### 🔇 Audio Silence Configuration
+
+Anki sometimes cuts off the beginning of audio files when loading. To prevent this, the script adds a configurable amount of silence at the start of each audio file.
+
+- **Default:** 300ms of silence
+- **To disable:** Set `audio_silence_ms` to `0`
+- **Adjust as needed:** If audio still cuts off, try increasing to `500` or `800`
 
 ### 🗣️ Accent Configuration
 
