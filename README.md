@@ -1,5 +1,7 @@
 # Anki IELTS Vocabulary Generator 📚
 
+> 🎨 **Vibe Coding Project** - This project was built entirely through AI-assisted "vibe coding" - a collaborative coding session with AI where the focus is on shipping fast and having fun. Expect some rough edges, but it works!
+
 A Python tool to automate the creation of IELTS vocabulary decks for Anki.
 It reads vocabulary from a JSON file, automatically generates British English pronunciation audio (using Google TTS), and exports a formatted text file ready for Anki import.
 
@@ -146,6 +148,26 @@ Edit `data/vocab.json` with your vocabulary:
 ]
 ```
 
+#### 💡 Pro Tip: Use AI to generate vocabulary data!
+
+You can use ChatGPT, Claude, Gemini, or any AI to generate vocabulary in the correct JSON format. Just use this prompt:
+
+```
+Generate 20 IELTS vocabulary words about [TOPIC] in this JSON format:
+[
+  {
+    "word": "vocabulary word",
+    "ipa": "/IPA pronunciation/",
+    "meaning": "English definition<br><i>(Vietnamese translation)</i>",
+    "context": "Example sentence with <b>word</b> in bold.<br><i>(Vietnamese translation)</i>",
+    "extra": "Synonyms: word1, word2",
+    "tags": "Topic_[TOPIC] IELTS_[PartOfSpeech]"
+  }
+]
+```
+
+Then paste the AI-generated JSON directly into `data/vocab.json`!
+
 ### 2. Run the script
 
 ```bash
@@ -170,7 +192,30 @@ Edit `config.json` to customize:
 | `deck_name`       | Target deck name in Anki                                      | `"IELTS Preparation::Vocabulary"` |
 | `note_type`       | Note type to use                                              | `"IELTS Advanced"`                |
 | `tts_lang`        | Language code for TTS                                         | `"en"`                            |
-| `tts_tld`         | TLD for accent (`"co.uk"` = British, `"com"` = American)      | `"co.uk"`                         |
+| `tts_tld`         | TLD for accent (see table below)                              | `"co.uk"`                         |
+
+### 🗣️ Accent Configuration
+
+Change `tts_tld` in `config.json` to get different English accents:
+
+| Accent           | `tts_tld` value |
+| ---------------- | --------------- |
+| 🇬🇧 British (UK)  | `"co.uk"`       |
+| 🇺🇸 American (US) | `"com"`         |
+| 🇦🇺 Australian    | `"com.au"`      |
+| 🇮🇳 Indian        | `"co.in"`       |
+| 🇨🇦 Canadian      | `"ca"`          |
+| 🇮🇪 Irish         | `"ie"`          |
+| 🇿🇦 South African | `"co.za"`       |
+| 🇳🇿 New Zealand   | `"co.nz"`       |
+
+**Example:** To use American accent, set:
+
+```json
+{
+  "tts_tld": "com"
+}
+```
 
 ## Anki Media Path Detection
 
