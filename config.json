@@ -1,0 +1,9 @@
+{
+  "anki_media_path": "C:\\Users\\Foggo\\AppData\\Roaming\\Anki2\\User 1\\collection.media",
+  "input_file": "data/vocab.json",
+  "output_file": "output/import_to_anki.txt",
+  "deck_name": "IELTS Preparation::Vocabulary",
+  "note_type": "IELTS Advanced",
+  "tts_lang": "en",
+  "tts_tld": "co.uk"
+}
