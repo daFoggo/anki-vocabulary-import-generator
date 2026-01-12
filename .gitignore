@@ -5,8 +5,8 @@ venv/
 env/
 
 # Output files (only push source code, not generated results)
-output/
-!output/.keep
+output/*
+!output/.gitkeep
 
 # Personal config (Optional: uncomment if you want to hide your config)
 # config.json
