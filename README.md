@@ -1,4 +1,4 @@
-# Anki IELTS Vocabulary Generator 📚
+# Anki Vocabulary Import Generator 📚
 
 > 🎨 **Vibe Coding Project** - This project was built entirely through AI-assisted "vibe coding" - a collaborative coding session with AI where the focus is on shipping fast and having fun. Expect some rough edges, but it works!
 
